@@ -15,8 +15,10 @@ public class Main {
         Cat cat = new Cat();
         Robot robot = new Robot();
         Human human = new Human();
-        Wall wall = new Wall(100000);
-        Racetrack racetrack = new Racetrack(100000);
+        Wall wall = new Wall(20);
+        Racetrack racetrack = new Racetrack(30);
+        Racetrack racetrack1 = new Racetrack(40);
+        Racetrack racetrack2 = new Racetrack(40);
 
 
         Participant[] participants = new Participant[3];
@@ -24,10 +26,11 @@ public class Main {
         participants[1] = robot;
         participants[2] = human;
 
-        Obstacles[] obstacles = new Obstacles[3];
+        Obstacles[] obstacles = new Obstacles[4];
         obstacles[0] = racetrack;
         obstacles[1] = wall;
         obstacles[2] = wall;
+        obstacles[3] = racetrack1;
 
 
 //        wall.doIt(cat);
@@ -38,9 +41,9 @@ public class Main {
 //        racetrack.doIt(human);
 //        racetrack.doIt(robot);
 
-        for (Obstacles o : obstacles){
-            for (Participant p : participants){
-                o.doIt(p);
+        for (Participant p : participants){
+            for (Obstacles o : obstacles){
+                    o.doIt(p);
             }
         }
 
