@@ -5,10 +5,16 @@ public class Human implements Participant {
 
 
 
-    private final int MAXRUN = 300;
-    private final int MAXJUMP = 300;
+    private int MAXRUN;
+    private int MAXJUMP;
 
-    public boolean distance = true;
+    public boolean distance;
+
+    public Human(){
+        distance = true;
+        MAXRUN = 300;
+        MAXJUMP = 300;
+    }
 
 
 

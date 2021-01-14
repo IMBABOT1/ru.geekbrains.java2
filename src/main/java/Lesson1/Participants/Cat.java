@@ -3,10 +3,17 @@ package Lesson1.Participants;
 public class Cat implements Participant {
 
 
-    private final int MAXRUN = 800;
-    private final int MAXJUMP = 800;
+    private int MAXRUN;
+    private int MAXJUMP;
 
-    public boolean distance = true;
+    public boolean distance;
+
+    public Cat(){
+        distance = true;
+        MAXRUN = 300;
+        MAXJUMP = 300;
+    }
+
 
 
     @Override

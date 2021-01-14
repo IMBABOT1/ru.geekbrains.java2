@@ -5,10 +5,16 @@ package Lesson1.Participants;
 public class Robot implements Participant {
 
 
-    private final int MAXRUN = 600;
-    private final int MAXJUMP = 600;
+    private int MAXRUN;
+    private int MAXJUMP;
 
-    public boolean distance = true;
+    public boolean distance;
+
+    public Robot(){
+        distance = true;
+        MAXRUN = 1;
+        MAXJUMP = 1;
+    }
 
 
     @Override
