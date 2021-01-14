@@ -8,7 +8,11 @@ public class Racetrack implements Obstacles {
         return race;
     }
 
-    private int race = 200;
+    private int race;
+
+    public Racetrack(int race){
+        this.race = race;
+    }
 
 
     @Override

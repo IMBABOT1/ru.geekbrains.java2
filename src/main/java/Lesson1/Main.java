@@ -15,8 +15,8 @@ public class Main {
         Cat cat = new Cat();
         Robot robot = new Robot();
         Human human = new Human();
-        Wall wall = new Wall();
-        Racetrack racetrack = new Racetrack();
+        Wall wall = new Wall(100000);
+        Racetrack racetrack = new Racetrack(100000);
 
 
         Participant[] participants = new Participant[3];

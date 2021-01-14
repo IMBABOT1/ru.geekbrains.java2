@@ -8,8 +8,12 @@ public class Wall implements Obstacles {
         return height;
     }
 
-    private int height  =  200;
+    private int height;
 
+
+    public Wall(int race){
+        this.height = race;
+    }
 
 
     @Override
