@@ -15,26 +15,40 @@ public class Main {
         Cat cat = new Cat();
         Robot robot = new Robot();
         Human human = new Human();
-        Wall wall = new Wall(100);
-        Racetrack racetrack = new Racetrack(100);
+        Wall wall = new Wall();
+        Racetrack racetrack = new Racetrack();
 
 
         Participant[] participants = new Participant[3];
-        participants[0] =  cat;
+        participants[0] = cat;
         participants[1] = robot;
         participants[2] = human;
 
         Obstacles[] obstacles = new Obstacles[3];
-        obstacles[0] = wall;
-        obstacles[1] = racetrack;
-        obstacles[2] = racetrack;
+        obstacles[0] = racetrack;
+        obstacles[1] = wall;
+        obstacles[2] = wall;
 
-        int i = 0;
-        for (Obstacles o : obstacles) {
-            while (i < obstacles.length) {
-                if (o.doIt(participants[i])) ;
-                i++;
+
+//        wall.doIt(cat);
+//        wall.doIt(human);
+//        wall.doIt(robot);
+//
+//        racetrack.doIt(cat);
+//        racetrack.doIt(human);
+//        racetrack.doIt(robot);
+
+        for (Obstacles o : obstacles){
+            for (Participant p : participants){
+                o.doIt(p);
             }
         }
+
+        for (Participant p : participants){
+            p.info();
+        }
+
     }
 }
+
+

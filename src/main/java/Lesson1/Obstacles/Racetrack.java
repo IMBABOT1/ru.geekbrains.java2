@@ -8,16 +8,12 @@ public class Racetrack implements Obstacles {
         return race;
     }
 
-    private int race;
-
-    public Racetrack(int race) {
-        this.race = race;
-    }
+    private int race = 200;
 
 
     @Override
-    public boolean doIt(Participant participant) {
-        return participant.isOnDistance();
+    public void doIt(Participant participant){
+         participant.run(race);
     }
 }
 

@@ -1,67 +1,44 @@
 package Lesson1.Participants;
-import Lesson1.Obstacles.Racetrack;
-import Lesson1.Obstacles.Wall;
 
 public class Cat implements Participant {
 
 
-    private final int MAXRUN = 300;
-    private final int MAXJUMP = 300;
-    private boolean runDistance;
-    private boolean jumpDistance;
+    private final int MAXRUN = 800;
+    private final int MAXJUMP = 800;
 
-    Wall wall = new Wall(200);
-    Racetrack racetrack = new Racetrack(200);
-
-
-    public boolean isDistance() {
-        return distance;
-    }
-
-    private boolean distance;
-
-
-    public Cat(){
-        runDistance = false;
-        jumpDistance = false;
-    }
+    public boolean distance = true;
 
 
     @Override
-    public boolean run() {
-        if (MAXRUN < racetrack.getRace()){
-            System.out.println("Кот сошел с дистанции: " + racetrack.getRace());
-            runDistance = false;
-        }else if (MAXRUN > racetrack.getRace()){
-            System.out.println("Кот прошел: " + racetrack.getRace());
-            runDistance = true;
-        }
-
-        return runDistance;
-    }
-
-    @Override
-    public boolean jump() {
-        if (MAXJUMP < wall.getHeight()){
-            System.out.println("Кот не смог прыгнуть: " + wall.getHeight());
-            jumpDistance = false;
-        }else if (MAXJUMP > wall.getHeight()){
-            System.out.println("Кот прыгнул" + wall.getHeight());
-            jumpDistance = true;
-        }
-
-        return jumpDistance;
-    }
-
-    @Override
-    public boolean isOnDistance(){
-        if  (run() && jump()){
-            distance = true;
-            System.out.println("Кот прошел полосу препятствий");
-        }else {
-            System.out.println("Кот не прошел полосу препятствий");
+    public void run(int run) {
+        if (MAXRUN >= run && distance == true){
+            System.out.println("Кот пробежал: " + run);
+        }else if (MAXRUN < run && distance == true){
+            System.out.println("Кот cошел с дистанции: " + run);
             distance = false;
+            return;
         }
-        return distance;
+    }
+
+    @Override
+    public void jump(int height) {
+        if (MAXJUMP >= height && distance == true){
+            System.out.println("Кот прыгнул: " + height);
+        }else if (MAXJUMP < height && distance == true){
+            System.out.println("Кот cошел с дистанции: " + height);
+            distance = false;
+            return;
+        }
+    }
+
+    @Override
+    public void info(){
+        if (distance == true){
+            System.out.println("Кот успешно закончил дистанцию");
+        }else {
+            System.out.println("Кот не смог закончить дистанцию");
+        }
     }
 }
+
+

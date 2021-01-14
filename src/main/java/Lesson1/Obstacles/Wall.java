@@ -8,16 +8,12 @@ public class Wall implements Obstacles {
         return height;
     }
 
-    private int height;
+    private int height  =  200;
 
-
-    public Wall(int race) {
-        this.height = race;
-    }
 
 
     @Override
-    public boolean doIt(Participant participant) {
-        return participant.isOnDistance();
+    public void doIt(Participant participant) {
+        participant.jump(height);
     }
 }
