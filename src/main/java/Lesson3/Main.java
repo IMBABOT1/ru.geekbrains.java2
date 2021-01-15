@@ -27,7 +27,14 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        System.out.println(uniqueWords(arr));
-        System.out.println(wordCount(arr));
+        Person p = new Person("asd", 880000001);
+        Person p1 = new Person("asd", 880000001);
+        Person p2 = new Person("asdf", 880000001);
+        Phonebook phonebook = new Phonebook();
+        phonebook.add(p);
+        phonebook.add(p1);
+        phonebook.add(p2);
+
+        System.out.println(phonebook.get("asd"));
     }
 }
