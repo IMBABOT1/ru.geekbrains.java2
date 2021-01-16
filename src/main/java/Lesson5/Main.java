@@ -82,8 +82,6 @@ public class Main {
         System.arraycopy(temp, h, arr, h, h);
 
         time = System.currentTimeMillis() - a;
-
-
         return  arr;
     }
 
@@ -91,5 +89,20 @@ public class Main {
 
     public static void main(String[] args) {
         System.out.println(Arrays.equals(method1(), method2()));
+        float result = 0;
+        float result1 = 0;
+        float[] first = method1();
+        float[] second = method2();
+
+        for (int i = 0; i < first.length ; i++) {
+                result += first[i];
+        }
+
+        for (int i = 0; i < second.length ; i++) {
+                result1 +=  second[i];
+        }
+
+        System.out.println(result);
+        System.out.println(result1);
     }
 }
