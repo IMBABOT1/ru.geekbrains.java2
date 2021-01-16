@@ -12,7 +12,7 @@ public class Main {
     private static long time = 0;
 
 
-    private static float[] method1(){
+    private static long method1(){
         for (int i = 0; i < arr.length ; i++) {
             arr[i] = 1;
         }
@@ -24,85 +24,43 @@ public class Main {
         }
 
 
-        time = System.currentTimeMillis() - a;
-
-        return arr;
+        return time = System.currentTimeMillis() - a;
     }
 
 
-    private static float[] method2() {
+    private static long method2() {
         for (int i = 0; i < arr.length; i++) {
             arr[i] = 1;
         }
         float[] first = new float[h];
         float[] second = new float[h];
 
-        float[] temp = new float[size];
-        for (int i = h; i <temp.length ; i++) {
-            temp[i] = 1;
-        }
-
         long a = System.currentTimeMillis();
 
         System.arraycopy(arr, 0, first, 0, h);
         System.arraycopy(arr, h, second, 0, h);
 
-        Thread t = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                for (int i = 0; i <first.length ; i++) {
-                    first[i] = (float)(first[i] * Math.sin(0.2f + i / 5) * Math.cos(0.2f + i / 5) * Math.cos(0.4f + i / 2));
-                }
-            }
-        });
+        Thread thread = new Thread(new MyThread(first, 0));
+        Thread thread1 = new Thread(new MyThread(second, h));
+        thread.start();
+        thread1.start();
         try {
-            t.start();
-            t.join();;
-        }catch (InterruptedException e){
-            e.printStackTrace();
-        }
-
-
-        Thread t1 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                for (int i = h; i <temp.length ; i++) {
-                    temp[i] = (float)(temp[i] * Math.sin(0.2f + i / 5) * Math.cos(0.2f + i / 5) * Math.cos(0.4f + i / 2));
-                }
-            }
-        });
-        try {
-            t1.start();
-            t1.join();;
+            thread.join();
+            thread1.join();
         }catch (InterruptedException e){
             e.printStackTrace();
         }
 
         System.arraycopy(first, 0, arr, 0, h);
-        System.arraycopy(temp, h, arr, h, h);
+        System.arraycopy(second, 0, arr, h, h);
 
-        time = System.currentTimeMillis() - a;
-        return  arr;
+       return time = System.currentTimeMillis() - a;
     }
 
 
 
     public static void main(String[] args) {
-        System.out.println(Arrays.equals(method1(), method2()));
-        float result = 0;
-        float result1 = 0;
-        float[] first = method1();
-        float[] second = method2();
-
-        for (int i = 0; i < first.length ; i++) {
-                result += first[i];
-        }
-
-        for (int i = 0; i < second.length ; i++) {
-                result1 +=  second[i];
-        }
-
-        System.out.println(result);
-        System.out.println(result1);
+        System.out.println(method1());
+        System.out.println(method2());
     }
 }
